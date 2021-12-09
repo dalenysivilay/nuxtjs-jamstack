@@ -1,18 +1,19 @@
 <template>
-  <main>
-    <section class="page-title">
-      <h1>Nuxt JAMStack Blog</h1>
-    </section>
-    <section class="blog-posts">
-      <h2>Latest Articles</h2>
+  <div class="container">
+    <div>
+      <h1 class="title">
+        My Blog
+      </h1>
+    </div>
+    <div class="posts">
       <div v-for="post in posts" :key="post._id">
-        <h3><a v-bind:href="post.slug.current" v-text="post.title" /></h3>
+        <h2><a v-bind:href="post.slug.current" v-text="post.title" /></h2>
         <div class="summary">
           <block-content :blocks="post.body[0]" v-bind:key="post.body[0]._id" v-if="post.body.length" />
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -23,17 +24,17 @@ export default {
     const query = groq`*[_type == "post"]`
     const posts = await $sanity.fetch(query)
     return { posts }
-  }
+  },
 }
 </script>
 
 <style>
-  .main {
-    margin: 2rem;
-    min-height: 100vh;
-  }
-  .blog-posts {
-    margin: 2rem 0;
-  }
-  .summary { margin-top: 0.5rem; }
+.container {
+  margin: 2rem;
+  min-height: 100vh;
+}
+.posts {
+  margin: 2rem 0;
+}
+.summary { margin-top: 0.5rem; }
 </style>

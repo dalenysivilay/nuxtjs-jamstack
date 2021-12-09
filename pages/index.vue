@@ -7,6 +7,9 @@
       <h2>Latest Articles</h2>
       <div v-for="post in posts" :key="post._id">
         <h3><a v-bind:href="post.slug.current" v-text="post.title" /></h3>
+        <div class="summary">
+          <block-content :blocks="post.body[0]" v-bind:key="post.body[0]._id" v-if="post.body.length" />
+        </div>
       </div>
     </section>
   </main>
@@ -32,4 +35,5 @@ export default {
   .blog-posts {
     margin: 2rem 0;
   }
+  .summary { margin-top: 0.5rem; }
 </style>

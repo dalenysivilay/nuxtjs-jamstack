@@ -3,7 +3,6 @@
         <div v-if="post">
             <h1 class="title" v-text="post.title" />
             <div class="content">
-                <block-content :blocks="child" v-for="child in post.body" :key="child._id" />
             </div>
         </div>
         <h4><a href='/'>Go back</a></h4>

@@ -2,14 +2,13 @@
   <div class="container">
     <div>
       <h1 class="title">
-        My Blog
+        NuxtJS JAMStack Blog
       </h1>
     </div>
     <div class="posts">
       <div v-for="post in posts" :key="post._id">
         <h2><a v-bind:href="post.slug.current" v-text="post.title" /></h2>
         <div class="summary">
-          <block-content :blocks="post.body[0]" v-bind:key="post.body[0]._id" v-if="post.body.length" />
         </div>
       </div>
     </div>
